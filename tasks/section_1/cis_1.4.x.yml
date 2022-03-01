@@ -4,6 +4,7 @@
   block:
       - name: "1.4.1 | L1 | PATCH | Ensure AIDE is installed | Install AIDE"
         package:
+            use: dnf
             name: aide
             state: present
 
