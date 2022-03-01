@@ -2,6 +2,7 @@
 
 - name: "2.3.1 | L1 | PATCH | Ensure NIS Client is not installed"
   package:
+      use: 'dnf'
       name: ypbind
       state: absent
   when:
@@ -16,6 +17,7 @@
 
 - name: "2.3.2 | L1 | PATCH | Ensure telnet client is not installed"
   package:
+      use: 'dnf'
       name: telnet
       state: absent
   when:
@@ -30,6 +32,7 @@
 
 - name: "2.3.3 | L1 | PATCH | Ensure LDAP client is not installed"
   package:
+      use: 'dnf'
       name: openldap-clients
       state: absent
   when:

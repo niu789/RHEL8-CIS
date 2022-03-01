@@ -2,6 +2,7 @@
 
 - name: "1.9 | L1 | PATCH | Ensure updates, patches, and additional security software are installed"
   package:
+      use: 'dnf'
       name: "*"
       state: latest
   when:

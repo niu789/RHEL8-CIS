@@ -46,17 +46,20 @@
 
 - name: "PRELIM | Section 4.1 | Configure System Accounting (auditd)"
   package:
+      use: 'dnf'
       name: audit
       state: present
   when: rhel8cis_level_2
 
 - name: "PRELIM | Section 5.1 | Configure cron"
   package:
+      use: 'dnf'
       name: cronie
       state: present
 
 - name: "PRELIM | Install authconfig"
   package:
+      use: 'dnf'
       name: authconfig
       state: present
   when:

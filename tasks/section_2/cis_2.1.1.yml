@@ -2,6 +2,7 @@
 
 - name: "2.1.1 | L1 | PATCH | Ensure xinetd is not installed"
   package:
+      use: 'dnf'
       name: xinetd
       state: absent
   when:

@@ -4,14 +4,14 @@
   block:
       - name: "4.1.1.1 | L2 | PATCH | Ensure auditd is installed | Install auditd packages"
         package:
-            use: dnf
+            use: 'dnf'
             name: audit
             state: present
         when: '"auditd" not in ansible_facts.packages'
 
       - name: "4.1.1.1 | L2 | PATCH | Ensure auditd is installed | Install auditd-lib packages"
         package:
-            use: dnf
+            use: 'dnf'
             name: audit-libs
             state: present
         when: '"auditd-lib" not in ansible_facts.packages'

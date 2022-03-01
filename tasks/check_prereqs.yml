@@ -12,7 +12,7 @@
 
       - name: Add the EPEL repository required for the python36-rpm pkg
         package:
-            use: dnf
+            use: 'dnf'
             name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
             state: present
         register: epel_installed
@@ -21,7 +21,7 @@
 
       - name: "PREREQ | Check required packages installed | Python3 "
         package:
-            use: dnf
+            use: 'dnf'
             name: "{{ item }}"
             state: present
         register: python3reqs_installed

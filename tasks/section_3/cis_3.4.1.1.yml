@@ -2,6 +2,7 @@
 
 - name: "3.4.1.1 | L1 | PATCH | Ensure a Firewall package is installed"
   package:
+      use: 'dnf'
       name: "{{ rhel8cis_firewall }}"
       state: present
   when:
