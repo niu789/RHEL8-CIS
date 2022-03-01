@@ -89,12 +89,14 @@
 
 - name: "PRELIM | Section 4.1 | Configure System Accounting (auditd)"
   package:
+      use: 'dnf'
       name: audit
       state: present
   when: rhel8cis_level_2
 
 - name: "PRELIM | Section 5.1 | Configure cron"
   package:
+      use: 'dnf'
       name: cronie
       state: present
 
@@ -110,6 +112,7 @@
 
 - name: "PRELIM | Install authconfig"
   package:
+      use: 'dnf'
       name: authconfig
       state: present
   when:
@@ -122,7 +125,8 @@
   block:
       - name: "PRELIM | Check whether machine is UEFI-based"
         stat:
-            path: /sys/firmware/efi
+            #path: /sys/firmware/efi
+            path: /boot/efi
         register: rhel_08_efi_boot
 
       - name: "PRELIM | AUDIT | set legacy boot and grub path | Bios"

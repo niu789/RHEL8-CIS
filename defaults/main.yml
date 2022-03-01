@@ -5,10 +5,10 @@ system_is_container: false
 # Place to find the container yml file for your environment - /vars/... This can be adjusted for your requirements.
 container_vars_file: is_container.yml
 
-os_check: true
+os_check: false
 # rhel8cis is left off the front of this var for consistency in testing pipeline
 # system_is_ec2 toggle will disable tasks that fail on Amazon EC2 instances. Set true to skip and false to run tasks
-system_is_ec2: false
+system_is_ec2: true
 
 rhel8cis_section1: true
 rhel8cis_section2: true
@@ -407,7 +407,7 @@ rhel8cis_tmp_svc: false
 # DO NOT USE PLAIN TEXT PASSWORDS!!!!!
 # The intent here is to use a password utility like Ansible Vault here
 rhel8cis_rh_sub_user: user
-rhel8cis_rh_sub_password: password
+rhel8cis_rh_sub_password: password # pragma: allowlist secret
 
 # 1.2.2
 # Do you require rhnsd
@@ -419,22 +419,22 @@ rhel8cis_rhnsd_required: false
 rhel8cis_xinetd_required: false
 
 # 1.4.1 Bootloader password
-rhel8cis_bootloader_password_hash: 'grub.pbkdf2.sha512.changethispassword'
-rhel8cis_bootloader_password: random
+rhel8cis_bootloader_password_hash: 'grub.pbkdf2.sha512.changethispassword' # pragma: allowlist secret
+rhel8cis_bootloader_password: random # pragma: allowlist secret
 rhel8cis_set_boot_pass: false
 
 # 1.10/1.11 Set crypto policy (LEGACY, DEFAULT, FUTURE, FIPS)
 # Control 1.10 states do not use LEGACY and control 1.11 says to use FUTURE or FIPS.
-rhel8cis_crypto_policy: "DEFAULT"
+rhel8cis_crypto_policy: "FUTURE" # pragma: allowlist secret
 
 # System network parameters (host only OR host and router)
 rhel8cis_is_router: false
 
 # IPv6 required
-rhel8cis_ipv6_required: true
+rhel8cis_ipv6_required: false
 
 # AIDE
-rhel8cis_config_aide: true
+rhel8cis_config_aide: false
 # AIDE cron settings
 rhel8cis_aide_cron:
     cron_user: root
@@ -459,21 +459,22 @@ rhel8cis_xwindows_required: false
 rhel8cis_time_synchronization: chrony
 
 # 2.2.1.2 Time Synchronization servers - used in template file chrony.conf.j2
-rhel8cis_time_synchronization_servers:
-    - 0.pool.ntp.org
-    - 1.pool.ntp.org
-    - 2.pool.ntp.org
-    - 3.pool.ntp.org
+rhel8cis_time_synchronization_manage_configuration: no
+#rhel8cis_time_synchronization_servers:
+#    - 0.pool.ntp.org
+#    - 1.pool.ntp.org
+#    - 2.pool.ntp.org
+#    - 3.pool.ntp.org
 
 rhel8cis_chrony_server_options: "minpoll 8"
 rhel8cis_ntp_server_options: "iburst"
 
 ## Section3 vars
 # 3.4.2 | PATCH | Ensure /etc/hosts.allow is configured
-rhel8cis_host_allow:
-    - "10.0.0.0/255.0.0.0"
-    - "172.16.0.0/255.240.0.0"
-    - "192.168.0.0/255.255.0.0"
+#rhel8cis_host_allow:
+#    - "10.0.0.0/255.0.0.0"
+#    - "172.16.0.0/255.240.0.0"
+#    - "192.168.0.0/255.255.0.0"
 
 # Firewall Service - either firewalld, iptables, or nftables
 rhel8cis_firewall: firewalld
@@ -512,9 +513,9 @@ rhel8cis_warning_banner: |
 update_audit_template: false
 
 rhel8cis_auditd:
-    space_left_action: email
+    space_left_action: syslog
     action_mail_acct: root
-    admin_space_left_action: halt
+    admin_space_left_action: syslog
     max_log_file_action: keep_logs
 
 # This can be used to configure other keys in auditd.conf
@@ -536,7 +537,7 @@ rhel8cis_syslog: rsyslog
 rhel8cis_rsyslog_ansiblemanaged: true
 
 # RHEL-08-4.2.1.4/4.2.1.5 remote and destination log server name
-rhel8cis_remote_log_server: logagg.example.com
+#rhel8cis_remote_log_server: logagg.example.com
 
 # 4.2.1.5, 4.2.2.1.3, 4.2.2.1.4
 rhel8cis_system_is_log_server: false
@@ -567,7 +568,7 @@ allow_logrotate_conf_umask_updates: false
 ## Section5 vars
 
 rhel8cis_sshd:
-    clientalivecountmax: 0
+    clientalivecountmax: 3
     clientaliveinterval: 900
     logingracetime: 60
     # WARNING: make sure you understand the precedence when working with these values!!
@@ -648,7 +649,7 @@ rhel8uid_info_dynamic: true
 # Timeout value is in seconds. (60 seconds * 10 = 600)
 rhel8cis_shell_session_timeout:
     file: /etc/profile.d/tmout.sh
-    timeout: 600
+    timeout: 1800
 
 ## Section6 vars
 
