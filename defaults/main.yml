@@ -19,7 +19,7 @@ rhel8cis_section6: true
 rhel8cis_level_1: true
 rhel8cis_level_2: true
 
-rhel8cis_selinux_disable: false
+rhel8cis_selinux_disable: true
 rhel8cis_legacy_boot: false
 
 ## Python Binary
@@ -387,10 +387,10 @@ rhel8cis_crypto_policy: "FUTURE"
 rhel8cis_is_router: false
 
 # IPv6 required
-rhel8cis_ipv6_required: true
+rhel8cis_ipv6_required: false
 
 # AIDE
-rhel8cis_config_aide: true
+rhel8cis_config_aide: false
 # AIDE cron settings
 rhel8cis_aide_cron:
     cron_user: root
@@ -432,13 +432,14 @@ rhel8cis_ntp_server_options: "iburst"
 
 ## Section3 vars
 # 3.4.2 | PATCH | Ensure /etc/hosts.allow is configured
-rhel8cis_host_allow:
-    - "10.0.0.0/255.0.0.0"
-    - "172.16.0.0/255.240.0.0"
-    - "192.168.0.0/255.255.0.0"
+#rhel8cis_host_allow:
+#    - "10.0.0.0/255.0.0.0"
+#    - "172.16.0.0/255.240.0.0"
+#    - "192.168.0.0/255.255.0.0"
 
 # Firewall Service - either firewalld, iptables, or nftables
-rhel8cis_firewall: firewalld
+#rhel8cis_firewall: firewalld
+rhel8cis_firewall: disabled
 
 # 3.4.2.4 Default zone setting
 rhel8cis_default_zone: public
@@ -466,9 +467,9 @@ rhel8cis_warning_banner: |
 ## Section4 vars
 
 rhel8cis_auditd:
-    space_left_action: email
+    space_left_action: syslog
     action_mail_acct: root
-    admin_space_left_action: halt
+    admin_space_left_action: syslog
     max_log_file_action: keep_logs
 
 rhel8cis_logrotate: "daily"
@@ -480,7 +481,7 @@ rhel8cis_audit_back_log_limit: 8192
 rhel8cis_max_log_file_size: 10
 
 # RHEL-08-4.2.1.4/4.2.1.5 remote and destation log server name
-rhel8cis_remote_log_server: logagg.example.com
+#rhel8cis_remote_log_server: logagg.example.com
 
 # RHEL-08-4.2.1.5
 rhel8cis_system_is_log_server: false
@@ -488,7 +489,7 @@ rhel8cis_system_is_log_server: false
 ## Section5 vars
 
 rhel8cis_sshd:
-    clientalivecountmax: 0
+    clientalivecountmax: 3
     clientaliveinterval: 900
     ciphers: "aes256-ctr,aes192-ctr,aes128-ctr"
     macs: "hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com"
@@ -512,7 +513,7 @@ rhel8cis_ssh_loglevel: INFO
 # 5.2.19 SSH MaxSessions setting. Must be 4 our less
 rhel8cis_ssh_maxsessions: 4
 rhel8cis_inactivelock:
-    lock_days: 30
+    lock_days: 90
 
 # 5.3.1/5.3.2 Custom authselect profile settings. Settings in place now will fail, they are place holders from the control example
 # Due to the way many multiple options and ways to configure this control needs to be enabled and settings adjusted to minimise risk
@@ -554,7 +555,7 @@ rhel8cis_int_gid: 1000
 # Timeout value is in seconds. (60 seconds * 10 = 600)
 rhel8cis_shell_session_timeout:
     file: /etc/profile.d/tmout.sh
-    timeout: 600
+    timeout: 1800
 # RHEL-08-5.4.1.5 Allow ansible to expire password for account with a last changed date in the future. False will just display users in violation, true will expire those users passwords
 rhel8cis_futurepwchgdate_autofix: true
 
