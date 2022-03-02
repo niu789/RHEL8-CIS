@@ -439,7 +439,7 @@ rhel8cis_ntp_server_options: "iburst"
 
 # Firewall Service - either firewalld, iptables, or nftables
 #rhel8cis_firewall: firewalld
-rhel8cis_firewall: disabled
+rhel8cis_firewall: iptables
 
 # 3.4.2.4 Default zone setting
 rhel8cis_default_zone: public
