@@ -20,7 +20,7 @@ rhel8cis_level_1: true
 rhel8cis_level_2: true
 
 rhel8cis_selinux_disable: false
-rhel8cis_legacy_boot: true
+rhel8cis_legacy_boot: false
 
 ## Python Binary
 ## This is used for python3 Installations where python2 OS modules are used in ansible
@@ -361,7 +361,7 @@ rhel8cis_tmp_svc: false
 # DO NOT USE PLAIN TEXT PASSWORDS!!!!!
 # The intent here is to use a password utility like Ansible Vault here
 rhel8cis_rh_sub_user: user
-rhel8cis_rh_sub_password: password
+rhel8cis_rh_sub_password: password # pragma: allowlist secret
 
 # 1.2.2
 # Do you require rhnsd
@@ -375,13 +375,13 @@ rhel8cis_varlog_location: "/var/log/sudo.log"
 rhel8cis_xinetd_required: false
 
 # 1.4.2 Bootloader password
-rhel8cis_bootloader_password_hash: 'grub.pbkdf2.sha512.changethispassword'
-rhel8cis_bootloader_password: random
+rhel8cis_bootloader_password_hash: 'grub.pbkdf2.sha512.changethispassword' # pragma: allowlist secret
+rhel8cis_bootloader_password: random # pragma: allowlist secret
 rhel8cis_set_boot_pass: false
 
 # 1.10/1.11 Set crypto policy (LEGACY, DEFAULT, FUTURE, FIPS)
 # Control 1.10 sates not ot use LEGACY and control 1.11 says to use FUTURE or FIPS.
-rhel8cis_crypto_policy: "FUTURE"
+rhel8cis_crypto_policy: "FUTURE" # pragma: allowlist secret
 
 # System network parameters (host only OR host and router)
 rhel8cis_is_router: false
@@ -421,11 +421,12 @@ rhel8cis_ypbind_required: false
 rhel8cis_time_synchronization: chrony
 
 # 2.2.1.2 Time Synchronization servers - used in template file chrony.conf.j2
-rhel8cis_time_synchronization_servers:
-    - 0.pool.ntp.org
-    - 1.pool.ntp.org
-    - 2.pool.ntp.org
-    - 3.pool.ntp.org
+rhel8cis_time_synchronization_manage_configuration: no
+#rhel8cis_time_synchronization_servers:
+#    - 0.pool.ntp.org
+#    - 1.pool.ntp.org
+#    - 2.pool.ntp.org
+#    - 3.pool.ntp.org
 
 rhel8cis_chrony_server_options: "minpoll 8"
 rhel8cis_ntp_server_options: "iburst"

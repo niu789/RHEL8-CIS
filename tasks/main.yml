@@ -6,7 +6,7 @@
       that: (ansible_distribution != 'CentOS' and ansible_os_family == 'RedHat' or ansible_os_family == "Rocky") and ansible_distribution_major_version is version_compare('8', '==')
       fail_msg: "This role can only be run against Supported OSs. {{ ansible_distribution }} {{ ansible_distribution_major_version }} is not supported."
       success_msg: "This role is running against a supported OS {{ ansible_distribution }} {{ ansible_distribution_major_version }}"
-  when: 
+  when:
     - os_check
     - not system_is_ec2
   tags:
@@ -26,7 +26,7 @@
 
 - name: Check rhel8cis_bootloader_password_hash variable has been changed
   assert:
-      that: rhel8cis_bootloader_password_hash != 'grub.pbkdf2.sha512.changethispassword'
+      that: rhel8cis_bootloader_password_hash != 'grub.pbkdf2.sha512.changethispassword' # pragma: allowlist secret
       msg: "This role will not be able to run single user password commands as rhel8cis_bootloader_password_hash variable has not been set"
   when:
   - rhel8cis_set_boot_pass
@@ -76,8 +76,8 @@
 
 - name: capture /etc/password variables
   include_tasks: parse_etc_password.yml
-  when: 
-  - rhel8cis_section5 or 
+  when:
+  - rhel8cis_section5 or
     rhel8cis_section6
   tags:
   - rule_5.5.2
