@@ -18,7 +18,7 @@
       - rule_2.3.1
 
 - name: "2.3.2 | PATCH | Ensure rsh client is not installed"
-  package:
+  ansible.builtin.package:
       name: rsh
       state: absent
   when:
@@ -34,7 +34,7 @@
       - rule_2.3.2
 
 - name: "2.3.3 | PATCH | Ensure talk client is not installed"
-  package:
+  ansible.builtin.package:
       name: talk
       state: absent
   when:
@@ -84,7 +84,7 @@
       - rule_2.3.5
 
 - name: "2.3.6 | PATCH | Ensure TFTP client is not installed"
-  package:
+  ansible.builtin.package:
       name: tftp
       state: absent
   when:

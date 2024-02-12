@@ -3,24 +3,20 @@
 # https://molecule.readthedocs.io/en/latest/
 
 driver:
-    name: docker
-
+    name: delegated
+    options:
+        managed: false
+        ansible_connection_options:
+            ansible_connection: local
 platforms:
-    - name: ubi8
-      image: registry.access.redhat.com/ubi8/ubi-init
-      pre_build_image: true
-      volumes:
-          - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      privileged: true
-      command: "/usr/sbin/init"
-      capabilities:
-          - SYS_ADMIN
+    - name: localhost
 
 provisioner:
     name: ansible
     config_options:
         defaults:
             interpreter_python: auto_silent
+            stdout_callback: yaml
             callbacks_enabled: profile_tasks, timer
 
 lint: |
