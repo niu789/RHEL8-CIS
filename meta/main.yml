@@ -1,16 +1,16 @@
 ---
 galaxy_info:
-    author: "Sam Doran, Josh Springer, Daniel Shepherd, Bas Meijeri, James Cassell, Mike Renfro, DFed, George Nalen, Mark Bolwell"
+    author: "MindPoint Group"
     description: "Apply the DISA RHEL 8 CIS"
     company: "MindPoint Group"
     license: MIT
     namespace: mindpointgroup
     role_name: rhel8_cis
-    min_ansible_version: 2.9.0
+    min_ansible_version: 2.11.1
     platforms:
         - name: EL
           versions:
-              - 8
+              - '8'
     galaxy_tags:
         - system
         - security
@@ -22,6 +22,7 @@ galaxy_info:
         - redhat
         - rhel
         - compliance
+        - complianceascode
 collections:
     - community.general
     - community.crypto

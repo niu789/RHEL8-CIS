@@ -1,5 +1,50 @@
 # Changes to rhel8CIS
 
+## Benchmark v3.0.0
+
+### 2.1 updates August 2024
+
+new workflow
+audit updates
+authselect rewrite
+thanks to @msachikanta, @fgierlinger, @bantify, @txdavec, @csabapatyi @dirkvdplas, @karlg100 and @devallan for issues and fixes
+now able to run audit on ARM64 although not officially supported by CIS feedback needed
+audit binary update to 0.4.8
+
+## 2.0 based on CIS 3.0.0
+
+### This is not an upgrade for CIS v2.0.0 due to the number of changes treat as a new baseline
+
+### Changes and improvements (March24)
+
+Changes to variable naming for those variables discovered
+some lint updates
+
+thanks to @bbaassssiiee
+
+- #353
+- #354
+- #359
+- #360
+- #361
+- #363
+- #364
+- #365
+
+Audit and audit_only changed to run prior to any significant changes
+
+#### Initial
+
+Inline with new CIS baseline
+Rewrite and ordering of nearly all controls
+Many new controls added
+Authselect is now used to setup pam options
+Min ansible version now 2.11.1
+
+- variable audit_only - ability to run audit only without remediate
+- New ansible-lint layout
+- New variable rhel8cis_disruption_high - found in defaults/main.yml default false
+
 ## 1.5.14 based on CIS v2.0.0
 
 - audit updates
@@ -157,10 +202,6 @@ Issues.
 - #228 Thanks to benbulll
   - audit binary copy var missing
 
-<<<<<<< HEAD
-=======
-
->>>>>>> devel
 ## 1.4.0
 
 - workflow improvements
