@@ -94,6 +94,7 @@
             - not rhel8cis_bluetooth_service
             - not rhel8cis_bluetooth_mask
         ansible.builtin.package:
+            use: dnf
             name: bluez
             state: absent
 

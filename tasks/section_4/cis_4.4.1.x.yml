@@ -11,6 +11,7 @@
       - pam
       - rule_4.4.1.1
   ansible.builtin.package:
+      use: dnf
       name: pam
       state: latest
 
@@ -26,6 +27,7 @@
       - pam
       - rule_4.4.1.2
   ansible.builtin.package:
+      use: dnf
       name: authselect
       state: latest
 

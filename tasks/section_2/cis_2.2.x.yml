@@ -18,6 +18,7 @@
             - not rhel8cis_autofs_services
             - not rhel8cis_autofs_mask
         ansible.builtin.package:
+            use: dnf
             name: autofs
             state: absent
 
@@ -50,6 +51,7 @@
             - not rhel8cis_avahi_server
             - not rhel8cis_avahi_mask
         ansible.builtin.package:
+            use: dnf
             name:
                 - avahi-autoipd
                 - avahi
@@ -87,6 +89,7 @@
             - not rhel8cis_dhcp_server
             - not rhel8cis_dhcp_mask
         ansible.builtin.package:
+            use: dnf
             name: dhcp-server
             state: absent
 
@@ -122,6 +125,7 @@
             - not rhel8cis_dns_server
             - not rhel8cis_dns_mask
         ansible.builtin.package:
+            use: dnf
             name: bind
             state: absent
 
@@ -154,6 +158,7 @@
             - not rhel8cis_dnsmasq_server
             - not rhel8cis_dnsmasq_mask
         ansible.builtin.package:
+            use: dnf
             name: dnsmasq
             state: absent
 
@@ -187,6 +192,7 @@
             - not rhel8cis_samba_server
             - not rhel8cis_samba_mask
         ansible.builtin.package:
+            use: dnf
             name: samba
             state: absent
 
@@ -220,6 +226,7 @@
             - not rhel8cis_ftp_server
             - not rhel8cis_ftp_mask
         ansible.builtin.package:
+            use: dnf
             name: vsftpd
             state: absent
 
@@ -254,6 +261,7 @@
             - not rhel8cis_message_server
             - not rhel8cis_message_mask
         ansible.builtin.package:
+            use: dnf
             name:
                 - dovecot
                 - cyrus-imapd
@@ -294,6 +302,7 @@
             - not rhel8cis_nfs_server
             - not rhel8cis_nfs_mask
         ansible.builtin.package:
+            use: dnf
             name: nfs-utils
             state: absent
 
@@ -327,6 +336,7 @@
             - not rhel8cis_nis_server
             - not rhel8cis_nis_mask
         ansible.builtin.package:
+            use: dnf
             name: ypserv
             state: absent
 
@@ -357,6 +367,7 @@
             - not rhel8cis_print_server
             - not rhel8cis_print_mask
         ansible.builtin.package:
+            use: dnf
             name: cups
             state: absent
 
@@ -393,6 +404,7 @@
             - not rhel8cis_rpc_server
             - not rhel8cis_rpc_mask
         ansible.builtin.package:
+            use: dnf
             name: rpcbind
             state: absent
 
@@ -429,6 +441,7 @@
             - not rhel8cis_rsync_server
             - not rhel8cis_rsync_mask
         ansible.builtin.package:
+            use: dnf
             name: rsync-daemon
             state: absent
 
@@ -464,6 +477,7 @@
             - not rhel8cis_net_snmp_server
             - not rhel8cis_net_snmp_mask
         ansible.builtin.package:
+            use: dnf
             name: net-snmp
             state: absent
 
@@ -497,6 +511,7 @@
             - not rhel8cis_telnet_server
             - not rhel8cis_telnet_mask
         ansible.builtin.package:
+            use: dnf
             name: telnet-server
             state: absent
 
@@ -529,6 +544,7 @@
             - not rhel8cis_tftp_server
             - not rhel8cis_tftp_mask
         ansible.builtin.package:
+            use: dnf
             name: tftp-server
             state: absent
 
@@ -565,6 +581,7 @@
             - not rhel8cis_squid_server
             - not rhel8cis_squid_mask
         ansible.builtin.package:
+            use: dnf
             name: squid
             state: absent
 
@@ -599,6 +616,7 @@
             - not rhel8cis_httpd_mask
             - "'httpd' in ansible_facts.packages"
         ansible.builtin.package:
+            use: dnf
             name: httpd
             state: absent
 
@@ -608,6 +626,7 @@
             - not rhel8cis_nginx_mask
             - "'nginx' in ansible_facts.packages"
         ansible.builtin.package:
+            use: dnf
             name: nginx
             state: absent
 
@@ -653,6 +672,7 @@
             - not rhel8cis_xinetd_server
             - not rhel8cis_xinetd_mask
         ansible.builtin.package:
+            use: dnf
             name: xinetd
             state: absent
 
@@ -681,6 +701,7 @@
       - NIST800-53R5_CM-11
       - rule_2.2.20
   ansible.builtin.package:
+      use: dnf
       name: xorg-x11-server-common
       state: absent
 

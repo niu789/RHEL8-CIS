@@ -15,6 +15,7 @@
   block:
       - name: "5.3.1 | PATCH | Ensure AIDE is installed | Install AIDE"
         ansible.builtin.package:
+            use: dnf
             name: aide
             state: present
 

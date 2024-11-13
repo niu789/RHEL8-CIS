@@ -12,6 +12,7 @@
       - sudo
       - rule_4.3.1
   ansible.builtin.package:
+      use: dnf
       name: sudo
       state: present
 

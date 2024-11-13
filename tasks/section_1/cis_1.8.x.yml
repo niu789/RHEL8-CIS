@@ -13,6 +13,7 @@
       - gdm
       - rule_1.8.1
   ansible.builtin.package:
+      use: dnf
       name: gdm
       state: absent
 

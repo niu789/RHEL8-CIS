@@ -17,12 +17,14 @@
   block:
       - name: "5.2.1.1 | PATCH | Ensure auditd is installed | Install auditd packages"
         ansible.builtin.package:
+            use: dnf
             name: audit
             state: present
         when: '"auditd" not in ansible_facts.packages'
 
       - name: "5.2.1.1 | PATCH | Ensure auditd is installed | Install auditd-lib packages"
         ansible.builtin.package:
+            use: dnf
             name: audit-libs
             state: present
         when: '"auditd-lib" not in ansible_facts.packages'

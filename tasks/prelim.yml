@@ -5,6 +5,7 @@
   tags:
       - always
   ansible.builtin.package:
+      use: dnf
       name:
           - python3-libselinux
           - python3-rpm
@@ -123,6 +124,7 @@
   tags:
       - always
   ansible.builtin.package:
+      use: dnf
       name: crypto-policies-scripts
       state: installed
 
@@ -153,6 +155,7 @@
   tags:
       - always
   ansible.builtin.package:
+      use: dnf
       name: dconf
       state: present
 
@@ -161,6 +164,7 @@
   tags:
       - always
   ansible.builtin.package:
+      use: dnf
       name: cronie
       state: present
 
@@ -243,6 +247,7 @@
   tags:
       - always
   ansible.builtin.package:
+      use: dnf
       name: audit
       state: present
 

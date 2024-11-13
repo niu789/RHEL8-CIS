@@ -20,6 +20,7 @@
   block:
       - name: Pre Audit Setup | Install git
         ansible.builtin.package:
+            use: dnf
             name: git
             state: present
 

@@ -12,6 +12,7 @@
       - NIST800-53R5_CA-9
       - rule_3.4.1.1
   ansible.builtin.package:
+      use: dnf
       name:
           - nftables
       state: present
@@ -46,6 +47,7 @@
       - name: "3.4.1.2 | PATCH | Ensure a single firewall configuration utility is in use | {{ rhel8cis_firewall }} package installed"
         when: "rhel8cis_firewall not in ansible_facts.packages"
         ansible.builtin.package:
+            use: dnf
             name: "{{ rhel8cis_firewall }}"
             state: present
 

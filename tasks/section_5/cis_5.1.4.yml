@@ -24,6 +24,7 @@
             - item != "/var/log/utmp"
             - item != "/var/log/wtmp"
             - item != "/var/log/lastlog"
+            - item != "/var/log/README"
         ansible.builtin.file:
             path: "{{ item }}"
             mode: 'u-x,g-wx,o-rwx'

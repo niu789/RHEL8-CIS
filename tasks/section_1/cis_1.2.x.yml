@@ -128,6 +128,7 @@
   block:
       - name: "1.2.5 | PATCH | Ensure updates, patches, and additional security software are installed | Patch"
         ansible.builtin.package:
+            use: dnf
             name: "*"
             state: latest
 

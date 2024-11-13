@@ -152,7 +152,7 @@ rhel8cis_rule_1_1_2_7_4: true
 # DNF - Patching
 rhel8cis_rule_1_2_1: true
 rhel8cis_rule_1_2_2: true
-rhel8cis_rule_1_2_3: true
+rhel8cis_rule_1_2_3: false # False for now since rule seems to brake dnf under amazon linux 2023
 rhel8cis_rule_1_2_4: true
 rhel8cis_rule_1_2_5: true
 
@@ -183,12 +183,12 @@ rhel8cis_rule_1_6_3: true
 rhel8cis_rule_1_6_4: true
 
 # MOTD and messages
-rhel8cis_rule_1_7_1: true
-rhel8cis_rule_1_7_2: true
-rhel8cis_rule_1_7_3: true
-rhel8cis_rule_1_7_4: true
-rhel8cis_rule_1_7_5: true
-rhel8cis_rule_1_7_6: true
+rhel8cis_rule_1_7_1: false
+rhel8cis_rule_1_7_2: false
+rhel8cis_rule_1_7_3: false
+rhel8cis_rule_1_7_4: false
+rhel8cis_rule_1_7_5: false
+rhel8cis_rule_1_7_6: false
 
 # Gnome desktop
 rhel8cis_rule_1_8_1: true
@@ -265,15 +265,15 @@ rhel8cis_rule_3_3_10: true
 rhel8cis_rule_3_3_11: true
 
 # Firewall
-rhel8cis_rule_3_4_1_1: true
-rhel8cis_rule_3_4_1_2: true
+rhel8cis_rule_3_4_1_1: false
+rhel8cis_rule_3_4_1_2: false
 
 # Firewall rules
-rhel8cis_rule_3_4_2_1: true
-rhel8cis_rule_3_4_2_2: true
-rhel8cis_rule_3_4_2_3: true
-rhel8cis_rule_3_4_2_4: true
-rhel8cis_rule_3_4_2_5: true
+rhel8cis_rule_3_4_2_1: false
+rhel8cis_rule_3_4_2_2: false
+rhel8cis_rule_3_4_2_3: false
+rhel8cis_rule_3_4_2_4: false
+rhel8cis_rule_3_4_2_5: false
 
 ##
 ## Section 4 rules
@@ -547,11 +547,11 @@ rhel8cis_screensaver_lock_delay: 5  # Set max value for lock-delay in seconds (b
 rhel8cis_time_synchronization: chrony
 
 # Time Synchronization servers - used in template file chrony.conf.j2
-rhel8cis_time_synchronization_servers:
-    - 0.pool.ntp.org
-    - 1.pool.ntp.org
-    - 2.pool.ntp.org
-    - 3.pool.ntp.org
+rhel8cis_time_synchronization_servers: []
+    #- 0.pool.ntp.org
+    #- 1.pool.ntp.org
+    #- 2.pool.ntp.org
+    #- 3.pool.ntp.org
 
 rhel8cis_chrony_server_options: "minpoll 8"
 rhel8cis_ntp_server_options: "iburst"
@@ -646,7 +646,7 @@ rhel8cis_xwindows_required: false
 rhel8cis_sysctl_file: /etc/sysctl.d/99_cis.conf
 
 # Firewall Service - either firewalld or nftables
-rhel8cis_firewall: 'firewalld'
+rhel8cis_firewall: none
 
 rhel8cis_default_zone: public
 
@@ -708,10 +708,11 @@ rhel8cis_authselect_custom_profile_create: true
 
 # This variable configures the name of the custom profile to be created and selected.
 # To be changed from default - cis_example_profile
-rhel8cis_authselect_custom_profile_name: cis_example_profile
+rhel8cis_authselect_custom_profile_name: cis
 # Name of the existing authselect profile to copy - options can be found with
 # ```authselect list``` on the host to be configured
-rhel8cis_authselect_default_profile_to_copy: "sssd --symlink-meta"
+#rhel8cis_authselect_default_profile_to_copy: "sssd --symlink-meta"
+rhel8cis_authselect_default_profile_to_copy: "minimal"
 
 rhel8cis_pam_faillock:
     attempts: 5
